@@ -105,4 +105,14 @@ function registerCallback(onResolve, onReject) {
   CALLBACKS[idx] = [onResolve, onReject];
   return idx;
 }
+
+window.onNegoceCoreResolve = (id, ...args) => {
+  const [resolve] = CALLBACK[id];
+  resolve(...args);
+};
+
+window.onNegoceCoreReject = (id, ...args) => {
+  const [resolve, reject] = CALLBACK[id];
+  reject(...args);
+};
 ```
