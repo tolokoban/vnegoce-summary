@@ -49,6 +49,17 @@ namespace VNegoceNET.Html5
                 JSValue value = browser.ExecuteJavaScriptAndReturnValue("window");
                 var NegoceCore = InversionOfControl.Resolve<INegoceCore>();
                 value.AsObject().SetProperty("NegoceCore", NegoceCore);
+                
+                NegoceCore.OnCallback = (id, json) =>
+                {
+                    var command = $"window.onNegoceCoreResolve(\"{id}\",{json.ToString()})";
+                    browser.ExecuteJavaScript(command);
+                };
+                NegoceCore.OnException = (id, json) =>
+                {
+                    var command = $"window.onNegoceCoreReject(\"{id}\",{json.ToString()})";
+                    browser.ExecuteJavaScript(command);
+                };                
             };
             mainLayout.Children.Add((UIElement)webView.GetComponent());
             webView.Browser.LoadURL(@"https://tolokoban.github.io/vnegoce-summary/index.html");
@@ -115,4 +126,9 @@ window.onNegoceCoreReject = (id, ...args) => {
   const [resolve, reject] = CALLBACK[id];
   reject(...args);
 };
+```
+
+And here is the code of the C# class `NegoceCore`:
+```c#
+
 ```
