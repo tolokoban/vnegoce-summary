@@ -87,7 +87,12 @@ export default {
         (...args) => {
           delete CALLBACK[id];
           resolve(...args);
-        });
+        }),
+        (...args) => {
+          delete CALLBACK[id];
+          reject(...args);
+        }));
+      
     });
   }
 }
@@ -95,9 +100,9 @@ export default {
 const IDX = 0;
 const CALLBACKS = {};
 
-function registerCallback(callback) {
+function registerCallback(onResolve, onReject) {
   const idx = `${IDX++}`;
-  CALLBACKS[idx] = callback;
+  CALLBACKS[idx] = [onResolve, onReject];
   return idx;
 }
 ```
