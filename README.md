@@ -65,9 +65,39 @@ The HTML 5 app is using the C# code as a service. Therefore it should use it asy
 Let's imagine we want to retrieve the list of all entities the current user can access.
 Here is how we want to write in the Javascript:
 ```js
+import Core from "./core"
+
 async function getEntities() {
-  const entities = await Core.GetAllEntities();
-  display( entities );
+  try {
+    const entities = await Core.GetAllEntities();
+    display( entities );
+  } catch( ex ) {
+    ...
+  }
 }
 ```
 
+The `Core` module is a wrapper around the `NegoceCore` onject which ease the asynchronous access of the C# service.
+Here is its code:
+```js
+export default {
+  async GetAllEntities() {
+    return new Promise((resolve, reject) => {
+      const id = registerCallback(
+        (...args) => {
+          delete CALLBACK[id];
+          resolve(...args);
+        });
+    });
+  }
+}
+
+const IDX = 0;
+const CALLBACKS = {};
+
+function registerCallback(callback) {
+  const idx = `${IDX++}`;
+  CALLBACKS[idx] = callback;
+  return idx;
+}
+```
