@@ -130,5 +130,23 @@ window.onNegoceCoreReject = (id, ...args) => {
 
 And here is the code of the C# class `NegoceCore`:
 ```c#
+public class DefaultNegoceCore : INegoceCore
+{
+    public delegate void Callback(string id, Json arg);
+    public Callback OnCallback { get; set; }
+    public Callback OnException { get; set; }
 
+    public void GetAllEntities(string id)
+    {
+        MessageLoop.Invoke(async () =>
+        {
+            try {
+                Json entities = await _service.GetAllEntities();
+                OnCallback?.Invoke(id, entities);
+            } catch( Exception ex ) {
+                OnException?.Invoke(id, ex.Message);
+            }
+        });
+    }
+}
 ```
