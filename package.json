@@ -1,0 +1,52 @@
+{
+    "name": "trail-passion-app-guide",
+    "version": "0.1.0",
+    "private": true,
+    "proxy": "http://localhost/www/TP",
+    "homepage": "./",
+    "dependencies": {
+        "@types/jest": "^24.0.9",
+        "@types/node": "^11.12.0",
+        "@types/ol": "^4.6.5",
+        "@types/react": "^16.8.9",
+        "@types/react-dom": "^16.8.2",
+        "@types/react-redux": "^7.0.9",
+        "archiver": "^3.0.0",
+        "markdown-to-jsx": "^6.10.2",
+        "ol": "^5.3.2",
+        "react": "^16.8.4",
+        "react-dom": "^16.8.4",
+        "react-redux": "^6.0.1",
+        "react-scripts": "2.1.8",
+        "redux": "^4.0.1",
+        "typescript": "^3.3.3333"
+    },
+    "scripts": {
+        "start": "react-app-rewired start",
+        "build": "react-app-rewired build",
+        "export": "cp -rvfu src/tp src/tfw ../../_common_",
+        "import": "cp -rvfu ../../_common_/* src/",
+        "php": "cp -rvfu backend/* ../../../../../www/TP/",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
+        "test": "react-app-rewired test",
+        "test:dbg": "node --inspect-brk ./node_modules/.bin/jest --runInBand",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ],
+    "devDependencies": {
+        "gh-pages": "^2.0.1",
+        "react-app-rewire-yaml": "^1.1.0",
+        "react-app-rewired": "^2.1.1",
+        "react-dev-utils": "^8.0.0",
+        "redux-devtools-extension": "^2.13.8"
+    }
+}
