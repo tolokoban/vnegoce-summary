@@ -92,7 +92,7 @@ export default {
           delete CALLBACK[id];
           reject(...args);
         }));
-      
+      NegoceCore.getallEntities(id);
     });
   }
 }
