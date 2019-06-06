@@ -48,16 +48,6 @@ namespace VNegoceNET.Html5
             {
                 JSValue value = browser.ExecuteJavaScriptAndReturnValue("window");
                 var NegoceCore = InversionOfControl.Resolve<INegoceCore>();
-                NegoceCore.OnCallback = (id, json) =>
-                {
-                    var command = $"window.onNegoceCoreMessage(\"{id}\",{json.ToString()})";
-                    browser.ExecuteJavaScript(command);
-                };
-                NegoceCore.OnException = (id, json) =>
-                {
-                    var command = $"window.onNegoceCoreException(\"{id}\",{json.ToString()})";
-                    browser.ExecuteJavaScript(command);
-                };
                 value.AsObject().SetProperty("NegoceCore", NegoceCore);
             };
             mainLayout.Children.Add((UIElement)webView.GetComponent());
@@ -66,3 +56,18 @@ namespace VNegoceNET.Html5
     }
 }
 ```
+
+After this, in the HTML 5 global scope, we will find an object called `window.NegoceCore` which will have all the functions provided by a C# instance of the C# class `NegoceCore`. This is how the Javascript can send messages to the C# code.
+
+## Asynchronous calls
+
+The HTML 5 app is using the C# code as a service. Therefore it should use it asynchronously.
+Let's imagine we want to retrieve the list of all entities the current user can access.
+Here is how we want to write in the Javascript:
+```js
+async function getEntities() {
+  const entities = await Core.GetAllEntities();
+  display( entities );
+}
+```
+
