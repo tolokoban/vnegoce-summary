@@ -1,9 +1,8 @@
 {
-    "name": "trail-passion-app-guide",
+    "name": "vnegoce-summary",
     "version": "0.1.0",
     "private": true,
-    "proxy": "http://localhost/www/TP",
-    "homepage": "./",
+    "homepage": "https://tolokoban.github.io/vnegoce-summary",
     "dependencies": {
         "@types/jest": "^24.0.9",
         "@types/node": "^11.12.0",
@@ -24,9 +23,6 @@
     "scripts": {
         "start": "react-app-rewired start",
         "build": "react-app-rewired build",
-        "export": "cp -rvfu src/tp src/tfw ../../_common_",
-        "import": "cp -rvfu ../../_common_/* src/",
-        "php": "cp -rvfu backend/* ../../../../../www/TP/",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build",
         "test": "react-app-rewired test",
