@@ -1,2 +1,3 @@
-# vnegoce-summary
-React version of the VNegoce summary
+# Trail-Passion Guide
+
+* [API documentation](man/api.md)
