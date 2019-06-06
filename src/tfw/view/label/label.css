@@ -1,9 +1,0 @@
-div.tfw-view-Label {
-    line-height: 1.2rem;
-    font-size: 80%;
-    font-weight: lighter;
-    padding: 0 .5rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
