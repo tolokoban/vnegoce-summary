@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/vnegoce-summary/precache-manifest.5c4fb419a100ce994f97d8b3cae08f31.js"
+  "/tfw-react-components/precache-manifest.ad348264272b519b37db9e243fca275d.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/vnegoce-summary/index.html", {
+workbox.routing.registerNavigationRoute("/tfw-react-components/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
