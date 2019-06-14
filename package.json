@@ -2,7 +2,7 @@
     "name": "vnegoce-summary",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://tolokoban.github.io/vnegoce-summary",
+    "homepage": "./",
     "dependencies": {
         "@types/jest": "^24.0.9",
         "@types/node": "^11.12.0",
